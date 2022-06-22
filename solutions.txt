@@ -28,7 +28,8 @@ Commands used:
     source devel/setup.bash
     
     #created a file.cpp in tasks1_package/src folder
-    #made relevant changes in the CMakeLists.txt [added an executable (add_executable) named task1__pakage_node with the source file named src/file.cpp.       Also within the CMakeLists.txt, make sure your new vision_node executable gets linked (target_link_libraries) to the catkin libraries.] 
+    #made relevant changes in the CMakeLists.txt (uploaded) [added an executable (add_executable) named task1__pakage_node with the source file named src/file.cpp.       
+    Also within the CMakeLists.txt, make sure your new vision_node executable gets linked (target_link_libraries) to the catkin libraries.] 
     
 
 ### 2: Python library
