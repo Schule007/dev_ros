@@ -35,6 +35,9 @@ Commands used:
     #created a "setup.py" file to link to the file2.py file (uploaded) 
     Also within the CMakeLists.txt, make sure thatcd task1_package executable gets linked (target_link_libraries) to the catkin libraries.] 
     
+    roscore (Terminal 1)
+    rosrun task1_package file2.py (Terminal 2)
+    rosnode list (Terminal 3)
 
 ### 2: Python library
 
@@ -44,6 +47,23 @@ In the ROS package, develop a library that has this simple function:
 def add(x, y):
     return x + y
 ```
+
+    catkin_create_pkg task2_package std_msgs rospy roscpp
+    catkin_make
+    source devel/setup.bash
+    
+    #created a python file named add.py with the basic add function in task1_package/src.
+    
+    mkdir add
+    vim __init__.py
+    vim function_caller.py
+    
+    cd catkin_ws
+    catkin_make
+    source devel/setup.bash
+    
+    rosrun task2_package function_caller
+    
 
 Show that you can create **another** package that produces a Python
 node that uses this function.
