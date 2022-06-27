@@ -2,7 +2,7 @@
 
 
 import rospy
-from get_function.srv import nil
+from input.srv import nil
 from std_msgs.msg import String
 
 
