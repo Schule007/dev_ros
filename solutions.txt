@@ -80,71 +80,28 @@ following requirements:
 - provide a service that accepts two numbers, and return the value
   calculated by this equation `gain * (x + y)`;
   
-  #!/usr/bin/env python3
+  Used two python files, namely task3_server.py and task3_client.py, to
+  incoporate a simple service server-client model.
+  
 
-from get_function.srv import addtwoints
-from get_function.srv import addtwointsRequest
-from get_function.srv import addtwointsResponse
-
-import rospy
-
-
-def handle_add_two_ints(req):
-    print("Returning %s(%s + %s) = %s" % (req.gain, req.a, req.b, req.gain*(req.a + req.b)))
-    response = addtwointsResponse(req.gain*(req.a + req.b))
-    return response
-
-def add_two_ints_server():
-    rospy.init_node('add_two_ints_server')
-    s = rospy.Service('add_two_ints', addtwoints, handle_add_two_ints)
-    print("Ready to run function.")
-    rospy.spin()
-
-
-if __name__ == "__main__":
-    add_two_ints_server()
-    
-    
 - provides a service, that when the user calls, toggles the node to
   publish a ROS topic. The thread should be running at 100hz.
 
-    
-#!/usr/bin/env python3
-
-from get_function.srv import addtwoints
-from get_function.srv import addtwointsRequest
-from get_function.srv import addtwointsResponse
-
-import rospy 
-import sys
-
-def add_two_ints_client(x, y):
-    rospy.wait_for_service('add_two_ints')
-    try: #service proxy sends information to the server
-        sp = rospy.ServiceProxy('add_two_ints', addtwoints) 
-        resp1 = sp(z, x, y)
-        return resp1.func
-    except rospy.ServiceException as e:
-        print("Service call failed: %s" % e)
-         
-if __name__ == "__main__":
-    z = rospy.get_param('gain')
-    if len(sys.argv) == 3:
-        x = int(sys.argv[1])
-        y = int(sys.argv[2])
-    else:
-        print("%s [z x y]" % sys.argv[0])
-        sys.exit(1)
-    print("Requesting %s(%s + %s)" % (z, x, y))
-    s = add_two_ints_client(x, y)
-    print("%s(%s + %s) = %s" % (z, x, y, s))
-    
-    
+  Used two python files, namely task3_thread_server.py and task3_thread_client.py, to
+  incoporate a simple service server-client model.
+  
+           
 ### 4: Deployment
 
 Develop a build system using `pyinvoke` that build the two ROS
-packages and copy the build artifacts into another Docker image. This
-image should be named `super-ros-node`.
+packages and copy the build artifacts into another Docker image. 
+
+Created a task.py file in order to achieve the goals.
+
+This image should be named `super-ros-node`.
+
+$ docker build -t super-ros-node
+
 
 When this docker image is ran using the below command, the node
 developed in Part 3 should be running.
