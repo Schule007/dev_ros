@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import rospy
-from get_function.srv import nil
+from input.srv import nil
 
 def time_client():
     rospy.wait_for_service('time')
