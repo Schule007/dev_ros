@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-from get_function.srv import addtwoints
-from get_function.srv import addtwointsRequest
-from get_function.srv import addtwointsResponse
+from input.srv import addtwoints
+from input.srv import addtwointsRequest
+from input.srv import addtwointsResponse
 
 import rospy 
 import sys
